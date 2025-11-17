@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard">
+    <div class="topbar">
+        <div class="brand">To-Do Dashboard</div>
+        <div class="controls">
+            <input type="text" placeholder="Ara..." id="search">
+            
+            <label class="importLabel">📂<input type="file" id="importFile"></label>
+            <button id="exportBtn">💾 Dışa Aktar</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="left">
+            <form class="addForm" id="addForm">
+                <input type="text" id="taskText" placeholder="Yeni görev...">
+                <select id="priority">
+                    <option value="low">Düşük</option>
+                    <option value="medium">Orta</option>
+                    <option value="high">Yüksek</option>
+                </select>
+                <input type="text" id="categoryInput" placeholder="Kategori">
+                <input type="datetime-local" id="dueDate">
+                <button type="submit">Ekle</button>
+            </form>
+
+            <div class="filtersRow">
+                <div class="filters">
+                    <button data-filter="all" class="active">Tümü</button>
+                    <button data-filter="active">Aktif</button>
+                    <button data-filter="completed">Tamamlanan</button>
+                    <button data-filter="today">Bugün</button>
+                </div>
+                <div class="extras">
+                    <button id="clearCompleted">Tamamlananları Temizle</button>
+                </div>
+            </div>
+
+            <ul class="taskList" id="taskList"></ul>
+        </div>
+
+        <div class="right">
+            <div class="panel calendar">
+                <h3>Takvim</h3>
+                <input type="date" id="calendarDate">
+                <div id="calendarList"></div>
+            </div>
+
+            <div class="panel stats">
+                <h3>İstatistikler</h3>
+                <div>Toplam: <span id="statTotal">0</span></div>
+                <div>Aktif: <span id="statActive">0</span></div>
+                <div>Tamamlanan: <span id="statDone">0</span></div>
+                <div>Bugün: <span id="statToday">0</span></div>
+            </div>
+
+            <div class="panel chart">
+                <h3>Kategori Dağılımı</h3>
+                <canvas id="categoryChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">© To-Do Dashboard</div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+
+:root {
+  --bg: #f4f7fb;
+  --card: #fff;
+  --muted: #64748b;
+  --accent: #6d28d9;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+}
+
+body.dark {
+  background: #1f2937;
+  color: #f1f5f9;
+}
+
+
+.dashboard {
+  max-width: 1200px;
+  margin: 20px auto;
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #eef2f7;
+  background: var(--card);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.controls input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e6eef6;
+  min-width: 200px;
+}
+
+.controls button,
+.importLabel {
+  background: transparent;
+  border: 1px solid #e6eef6;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.importLabel input {
+  display: none;
+}
+
+.main {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.addForm {
+  display: grid;
+  grid-template-columns: 1fr 100px 160px 120px 90px;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.addForm input,
+.addForm select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6eef6;
+  background: white;
+}
+
+.addForm button {
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.filtersRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  background: #f7f9fc;
+  border: 1px solid #eef2f7;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.filters button.active {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+.extras button {
+  background: transparent;
+  border: 1px dashed #e6eef6;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 66vh;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  border-left: 6px solid #c7d2fe;
+  box-shadow: 0 6px 18px rgba(12, 18, 36, 0.04);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.task.completed {
+  background: #f0fdf4;
+  border-left-color: var(--success);
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+
+.subtasks {
+  margin-top: 6px;
+  padding-left: 18px;
+  border-left: 2px dashed #e6eef6;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subtask {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.progressBar {
+  height: 6px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--success);
+  width: 0%;
+  transition: width 0.3s;
+}
+
+
+.panel {
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eef2f7;
+}
+
+.panel h3 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.categoryChip {
+  background: #f7f9fc;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid #eef2f7;
+  cursor: pointer;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 18px;
+  border-top: 1px solid #eef2f7;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: rgba(15, 23, 42, 0.95);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: none;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 4px;
+  font-size: 16px;
+}
+
+
+@media(max-width: 1000px) {
+  .main {
+    flex-direction: column;
+  }
+  .right {
+    width: 100%;
+  }
+  .addForm {
+    grid-template-columns: 1fr 120px 1fr;
+    gap: 8px;
+  }
+}
+
+
+.panel.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel.calendar input[type="date"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6eef6;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.panel.calendar input[type="date"]:hover {
+  border-color: var(--accent);
+}
+
+#calendarList {
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+}
+
+#calendarList .calendarItem {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f7f9fc;
+  border-left: 4px solid var(--accent);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s, transform 0.1s;
+  cursor: default;
+}
+
+#calendarList .calendarItem:hover {
+  background: #eef2f7;
+  transform: translateX(2px);
+}
+
+#calendarList .calendarItem.empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  border-left: none;
+  background: transparent;
+}
